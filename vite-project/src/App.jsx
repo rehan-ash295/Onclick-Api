@@ -35,7 +35,7 @@ function MyPage() {
 function Youre() {
   return(
     <div>
-      Hello You are educated now
+      Hello You are educated now ok
     </div>
   )
   
