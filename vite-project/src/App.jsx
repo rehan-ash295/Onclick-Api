@@ -16,7 +16,7 @@ function App() {
   <Routes>
   <Route path='/' element={<Firstpg></Firstpg>}></Route>
     <Route path='/myland' element={<MyPage></MyPage>}></Route>
-    <Route path='/Educate' element={<Youred></Youred>}></Route>
+    <Route path='/Educate' element={<Youre></Youre>}></Route>
   </Routes>
   </BrowserRouter>
   ) 
@@ -32,7 +32,7 @@ function MyPage() {
   
 }
 
-function Youred() {
+function Youre() {
   return(
     <div>
       Hello You are educated now
