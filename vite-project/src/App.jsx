@@ -2,31 +2,52 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {BrowserRouter,Routes, Route, Link } from "react-router-dom"
 
 
 function App() {
-  const [currentTab, setTab]= useState(1)
-  const [tabdata, setJso]= useState({})
+  return(
+  <BrowserRouter>
+  <Link to="/">Go to | Home Page</Link>
+  <br></br>
+  <Link to="myland">Go to | Landing Page</Link>
+  <br></br>
+  <Link to="Educate">Go to | Educate yourself</Link>
+  <Routes>
+  <Route path='/' element={<Firstpg></Firstpg>}></Route>
+    <Route path='/myland' element={<MyPage></MyPage>}></Route>
+    <Route path='/Educate' element={<Youred></Youred>}></Route>
+  </Routes>
+  </BrowserRouter>
+  ) 
 
-  useEffect(function(){
+}
 
-    fetch('https://jsonplaceholder.typicode.com/todos/'+ currentTab)
-      .then( async response => {
-        const json= await response.json();
-        setJso(json);
-      })
-  },[currentTab])
-
+function MyPage() {
   return(
     <div>
-      <button onClick={function(){setTab(1)}} style={{color: currentTab==1 ? "red" : "black"}}>To-do 1</button>
-      <button onClick={function(){setTab(2)}} style={{color: currentTab==2 ? "red" : "black"}}>To-do 2</button>
-      <button onClick={function(){setTab(3)}} style={{color: currentTab==3 ? "red" : "black"}}>To-do 3</button>
-      <br></br>
-      {tabdata.title}
+      Hello landing page
     </div>
   )
+  
+}
 
+function Youred() {
+  return(
+    <div>
+      Hello You are educated now
+    </div>
+  )
+  
+}
+
+function Firstpg() {
+  return(
+    <div>
+      This is the first page
+    </div>
+  )
+  
 }
 
 
