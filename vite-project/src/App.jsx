@@ -1,57 +1,42 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import {BrowserRouter,Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 
 function App() {
-  return(
-  <BrowserRouter>
-  <Link to="/">Go to | Home Page</Link>
-  <br></br>
-  <Link to="myland">Go to | Landing Page</Link>
-  <br></br>
-  <Link to="Educate">Go to | Educate yourself</Link>
-  <Routes>
-  <Route path='/' element={<Firstpg></Firstpg>}></Route>
-    <Route path='/myland' element={<MyPage></MyPage>}></Route>
-    <Route path='/Educate' element={<Youre></Youre>}></Route>
-  </Routes>
-  </BrowserRouter>
-  ) 
-
-}
-
-function MyPage() {
+  let [bulstate, setstate]= useState("https://img.freepik.com/free-vector/realistic-light-bulb-with-electricity_23-2149129410.jpg?w=2000")
   return(
     <div>
-      Hello landing page
+      
+      <Bulbstate bulstate={bulstate}></Bulbstate>
+      <StateChange bulstate={bulstate} setstate={setstate}></StateChange>
     </div>
   )
-  
+
+ 
 }
 
-function Youre() {
-  return(
-    <div>
-      Hello You are educated now ok
-    </div>
-  )
-  
+function Bulbstate({bulstate}){
+  return <div>
+    <img src={bulstate} style={{width:90, height:90}}></img>
+
+  </div>
 }
 
-function Firstpg() {
-  return(
-    <div>
-      This is the first page
-    </div>
-  )
-  
+function StateChange({bulstate,setstate}){
+  function ChangeLight(){
+    const lightON="https://img.freepik.com/free-vector/realistic-light-bulb-with-electricity_23-2149129410.jpg?w=2000"
+    const lightOff="https://images.pexels.com/photos/577514/pexels-photo-577514.jpeg?cs=srgb&dl=light-light-bulb-idea-577514.jpg&fm=jpg"
+    setstate(bulstate === lightON ? lightOff : lightON)
+
+  }
+  return <div>
+  <button onClick={ChangeLight}>Switch Light</button>
+
+  </div>
 }
-
-
-
 
 
 export default App
